@@ -1,6 +1,6 @@
-# Midterm_HCC
+# HCC Midterm Project
 
-## Installation
+### Installation
 ##### Clone and install requirements
     $ git clone https://github.com/ssling0817/UAV_Object_Detection
     $ cd PyTorch-YOLOv3/
