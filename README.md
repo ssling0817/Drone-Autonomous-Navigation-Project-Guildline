@@ -142,15 +142,6 @@ Visit https://github.com/ssling0817/UAV_Object_Detection for detail operation.
     target_Label_Folder = 'new/Label/' + star + '/'
 Take `Sagittarius` as an example, it is going to select from its `org/Image` and `org/Label` folders, and save in `new/Image` and `new/Label` folders.
 
-####
-
-
-
-
-
-
-
-
 
 ## Flying Algorithm
 ### Takeoff
