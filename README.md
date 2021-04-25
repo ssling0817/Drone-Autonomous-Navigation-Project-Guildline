@@ -19,6 +19,31 @@ Visit https://github.com/ssling0817/UAV_Object_Detection for detail operation.
         hsv = np.array(hsv, dtype = np.uint8)
         img = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
         return img
+##### Brightness conversion with label
+    num_brightness_aug = 4
+    for imgpath in tqdm(glob.glob(target_Image_Folder + '*')):
+        img = cv2.imread(imgpath)
+        name = imgpath.split('/', 4)[3].split('.')[0]
+        valist = []
+        for i in range(num_brightness_aug):
+            if i % 2 == 0:
+                low, high = 0.4, 0.8
+            else:
+                low, high = 1.2, 1.6
+            value = random.uniform(low, high)
+            valist.append(value)
+        for value in valist:
+            img_r = brightness(img, value)
+            cv2.imwrite(target_Image_Folder + name + '_brightness' + str(value)[:5] + '.jpg', img_r)
+            path = target_Label_Folder + name + '.txt'
+            infile = open(path, 'r')
+            for line in infile:
+                outfile = open(target_Label_Folder + name + '_brightness' + str(value)[:5] + '.txt', 'w')
+                outfile.write(line)
+                outfile.close()
+            infile.close()
+
+
 #### Horizontal and vertical flip
     def horizontal_flip(img, flag):
         if flag:
@@ -30,7 +55,37 @@ Visit https://github.com/ssling0817/UAV_Object_Detection for detail operation.
             return cv2.flip(img, 0)
         else:
             return img
-            
+##### Flip with label
+    for imgpath in tqdm(glob.glob(target_Image_Folder + '*')):
+        img = cv2.imread(imgpath)
+        name = path.split('/', 4)[3].split('.')[0]
+        img_r = horizontal_flip(img, True)
+        cv2.imwrite(target_Image_Folder + name + '_horizontal' + '.jpg', img_r)
+        img_r = vertical_flip(img, True)
+        cv2.imwrite(target_Image_Folder + name + '_vertical' + '.jpg', img_r)
+        path = target_Label_Folder + name + '.txt'
+        infile = open(path, 'r')
+        for line in infile:
+            data = line.split(' ')
+            x = float(data[1]) - 0.5
+            x = x * (-1)
+            x = x + 0.5
+            outfile = open(target_Label_Folder + name + '_horizontal' + '.txt', 'w')
+            data[1] = str(x)
+            outfile.write(' '.join(data))
+            outfile.close()
+            data = line.split(' ')
+            y = float(data[2]) - 0.5
+            y = y * (-1)
+            y = y + 0.5
+            outfile = open(target_Label_Folder + name + '_vertical' + '.txt', 'w')
+            data[2] = str(y)[:8]
+            outfile.write(' '.join(data))
+            outfile.close()
+        infile.close()
+
+
+
 #### Rotation and Rotation Matrix Functions
     def rotation(img, angle):
         h, w = img.shape[:2]
