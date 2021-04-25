@@ -5,13 +5,13 @@ Change the detect target in`detect_UAV.py` to your specific target name. For exa
 Make sure this target exists in your `data/custom/classes.names`.
 
 ## Flying Algorithm
-#### Takeoff
+### Takeoff
      sock.sendto("takeoff".encode(encoding="utf-8"), tello_address)
      time.sleep(0.03)
      time.sleep(3)
      sock.sendto("up 50".encode(encoding="utf-8"),tello_address)
      time.sleep(1)
-#### Unable to detect after taking off
+### Unable to detect after taking off
      if(detect==False):
           msg = "up 20"
           msg = msg.encode(encoding="utf-8")
@@ -82,7 +82,7 @@ Calculate the bounding box center point, if the target has entered the acquisiti
 but the target is not detected, set back 20cm, 
 because the drone might fly too close to detect successfully.
 
-#### Capture and land
+### Capture and land
      def on_press(key):
           if(key==Key.f1):
                save_result()
@@ -91,3 +91,11 @@ because the drone might fly too close to detect successfully.
           listener = keyboard.Listener(on_press=on_press)
           listener.start()
 Press F1 to capture the screen and F5 to land the drone.
+
+### Save the result
+     def save_result():
+          global num
+          global target
+          image = ImageGrab.grab()
+          image.save("result/"+target+str(num)+".jpg")
+          num=num+1
