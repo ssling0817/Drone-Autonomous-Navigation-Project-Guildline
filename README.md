@@ -6,11 +6,11 @@ Make sure this target exists in your `data/custom/classes.names`.
 
 ## Flying Algorithm
 #### Takeoff
-    $ sock.sendto("takeoff".encode(encoding="utf-8"), tello_address)
-    $ time.sleep(0.03)
-    $ time.sleep(3)
-    $ sock.sendto("up 50".encode(encoding="utf-8"),tello_address)
-    $ time.sleep(1)
+     sock.sendto("takeoff".encode(encoding="utf-8"), tello_address)
+     time.sleep(0.03)
+     time.sleep(3)
+     sock.sendto("up 50".encode(encoding="utf-8"),tello_address)
+     time.sleep(1)
 
 #### Change the detection range
 Calculate the bounding box center point, if the target has entered the acquisition range, but the target is not detected, set back 20cm.
