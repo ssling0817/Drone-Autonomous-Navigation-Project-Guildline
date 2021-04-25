@@ -1,8 +1,12 @@
 # Midterm_HCC
 
-#### Change target
-Change the detect target in`detect_UAV.py` to your specific target name. For example, target="Gemini".
-Make sure this target exists in your `data/custom/classes.names`.
+## Installation
+##### Clone and install requirements
+    $ git clone https://github.com/ssling0817/UAV_Object_Detection
+    $ cd PyTorch-YOLOv3/
+    $ sudo pip3 install -r requirements.txt
+    
+
 
 ## Flying Algorithm
 ### Takeoff
@@ -11,6 +15,10 @@ Make sure this target exists in your `data/custom/classes.names`.
      time.sleep(3)
      sock.sendto("up 50".encode(encoding="utf-8"),tello_address)
      time.sleep(1)
+#### Change target
+Change the detect target in`detect_UAV.py` to your specific target name. For example, target="Gemini".
+Make sure this target exists in your `data/custom/classes.names`.
+
 ### Unable to detect after taking off
      if(detect==False):
           msg = "up 20"
