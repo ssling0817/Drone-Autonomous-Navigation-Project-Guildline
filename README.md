@@ -159,9 +159,12 @@ Take `Sagittarius` as an example, it is going to select from its `org/Image` and
      time.sleep(3)
      sock.sendto("up 50".encode(encoding="utf-8"),tello_address)
      time.sleep(1)
-#### Change target
-Change the detect target in`detect_UAV.py` to your specific target name. For example, target="Gemini".
-Make sure this target exists in your `data/custom/classes.names`.
+### Change target
+Change the detect target in`detect_UAV.py` to your specific target name. 
+Take `Gemini` as an example:
+
+    target="Gemini"
+Besides, make sure the target class exists in your `data/custom/classes.names`.
 
 ### Unable to detect after taking off
      if(detect==False):
