@@ -1,4 +1,4 @@
-# HCC Midterm Project
+# Drone Autonomous Navigation System Guildline
 
 ### Installation
 ##### Clone and install requirements
